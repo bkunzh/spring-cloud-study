@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class App {
     public static void main(String[] args) {
+        // --spring.profiles.active=xx
         SpringApplication.run(App.class, args);
     }
 }

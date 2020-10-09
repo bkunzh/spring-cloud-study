@@ -1,1 +1,19 @@
-# bootstrap配置比这个配置优先级高，相同配置会覆盖本配置文件
+# bootstrap配置的配置中心比这个配置优先级高，相同配置会覆盖本配置文件
+# bootstrap.yml 先于 application.yml 加载，属性优先级也高
+#server:
+#  port: 3201
+
+#management:
+#  endpoint:
+#    shutdown:
+#      enabled: false
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#
+#data:
+#  env: default profile
+#  user:
+#    username: aaa
+#    password: bbb

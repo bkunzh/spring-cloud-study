@@ -1,13 +1,23 @@
 # 简化配置
+#server:
+#  port: 3399
+
 spring:
   application:
     name: config-single-client
   cloud:
     config:
-      uri: http://localhost:3301
+      uri: http://dev.bk.com:3301
       label: master
+  profiles:
+    active: dev,prod
+#    active: dev
+# 活动配置文件优先于默认配置，config-single-client-xxx.yml优于config-single-client.yml，这两个文件都会加载，
+# config-single-client-xxx.yml中没有的属性，如果config-single-client.yml中有，就使用有的。
+# 如果有多个配置文件，则最后一个优先（类似于向中添加条目Map）
 
-# 应该去掉spring.cloud.config.profile，根据spring.profiles.active自动选择相关的配置
+
+# 应该去掉spring.cloud.config.profile，根据命令行--spring.profiles.active=xx自动选择相关的配置
 # 有spring.cloud.config.profile=dev，就取得config-single-client-dev.yml作为配置，
 # 不要这个属性取得config-single-client-{spring.profiles.active}.yml作为配置
 #      profile: dev
