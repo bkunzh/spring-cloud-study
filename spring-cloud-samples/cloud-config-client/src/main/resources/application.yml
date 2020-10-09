@@ -1,17 +1,1 @@
-server:
-  port: 3302
-
-management:
-  endpoint:
-    shutdown:
-      enabled: false
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-
-data:
-  env: NaN
-  user:
-    username: NaN
-    password: NaN
+# bootstrap配置比这个配置优先级高，相同配置会覆盖本配置文件

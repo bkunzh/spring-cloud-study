@@ -1,24 +1,14 @@
+# 简化配置
 spring:
-  profiles:
-    active: dev
----
-spring:
-  profiles: prod
   application:
     name: config-single-client
   cloud:
     config:
       uri: http://localhost:3301
       label: master
-      profile: prod
 
----
-spring:
-  profiles: dev
-  application:
-    name: config-single-client
-  cloud:
-    config:
-      uri: http://localhost:3301
-      label: master
-      profile: dev
+# 应该去掉spring.cloud.config.profile，根据spring.profiles.active自动选择相关的配置
+# 有spring.cloud.config.profile=dev，就取得config-single-client-dev.yml作为配置，
+# 不要这个属性取得config-single-client-{spring.profiles.active}.yml作为配置
+#      profile: dev
+
