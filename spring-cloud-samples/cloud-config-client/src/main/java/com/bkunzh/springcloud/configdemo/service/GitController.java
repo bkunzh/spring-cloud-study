@@ -1,6 +1,7 @@
 package com.bkunzh.springcloud.configdemo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author bkunzh
  * @date 2020/10/8
  */
+//@RefreshScope
 @RestController
 public class GitController {
     @Autowired
