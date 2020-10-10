@@ -1,4 +1,4 @@
-package com.bkunzh.springcloud.configdemo.service;
+package com.bkunzh.cloud.configclient.service;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
