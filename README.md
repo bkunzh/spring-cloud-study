@@ -3,14 +3,14 @@
     - [1.1 spring-cloud命名](#11-spring-cloud命名)
     - [1.2 spring clound和spring boot版本关系](#12-spring-clound和spring-boot版本关系)
     - [1.99 code](#199-code)
-  - [99. 参考](#99-参考)
+  - [99. 笔记](#99-笔记)
     - [1. config](#1-config)
       - [1.1 <https://www.cnblogs.com/fengzheng/p/11242128.html>](#11-httpswwwcnblogscomfengzhengp11242128html)
         - [1) 基础实现](#1-基础实现)
         - [2) 结合actuator，可以通过调接口的方式手动触发刷新配置](#2-结合actuator可以通过调接口的方式手动触发刷新配置)
         - [3) 在 github 中配置 Webhook](#3-在-github-中配置-webhook)
         - [4) 使用 Spring Cloud Bus 来自动刷新多个客户端](#4-使用-spring-cloud-bus-来自动刷新多个客户端)
-        - [5)](#5)
+        - [5) 使用eureka实现配置中心的高可用](#5-使用eureka实现配置中心的高可用)
 
 # spring-cloud-study
 
@@ -39,12 +39,12 @@
 spring-cloud-samples
 
 
-## 99. 参考
+## 99. 笔记
 ### 1. config
 #### 1.1 <https://www.cnblogs.com/fengzheng/p/11242128.html>
 ##### 1) 基础实现
 参照这个实现了config服务端，实现见cloud-config-server，然后客户端使用config的git仓库配置，实现见cloud-config-client和spring-study/springboot2.
-**Spring Cloud Config client在项目启动时加载配置内容这一机制，导致了它存在一个缺陷，修改配置文件内容后，不会自动刷新。**要刷新配置需要重启客户端微服务，不好。
+**Spring Cloud Config client在项目启动时加载配置内容这一机制，导致了它存在一个缺陷，修改配置文件内容后，不会自动刷新。** 要刷新配置需要重启客户端微服务，不好。
 ##### 2) 结合actuator，可以通过调接口的方式手动触发刷新配置
 （需要读取配置的类上增加@RefreshScope注解，这里不加注解调接口也可以更新配置。）
 调用 post http://localhost:3302/actuator/refresh。之后再调用http://localhost:3302/show2，发现配置已经变了；但是调用http://localhost:3302/show配置没变，这和@Value 注解的实现有关，和@RefreshScope无关，所以，我们在项目中就不要使用这种方式加载配置了，而是使用@ConfigurationProperties(prefix = "xx")
@@ -70,7 +70,7 @@ management:
 
 // todo 有时间实现
 
-##### 5)
+##### 5) 使用eureka实现配置中心的高可用
 一个配置中心服务器可能会挂掉，使用eureka管理多个配置中心服务端，以实现高可用。
 
 // todo 学了eureka再去实现
