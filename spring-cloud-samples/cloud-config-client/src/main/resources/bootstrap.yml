@@ -7,7 +7,7 @@ spring:
     name: config-single-client
   cloud:
     config:
-      uri: http://dev.bk.com:3301
+      uri: http://testconf.bkzh.com:80 # nginx地址
       label: master
   profiles:
     active: dev,prod
